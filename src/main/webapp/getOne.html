@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX use JSON get data_One Hero</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="use AJAX get Category object--->" id="sender">
+<div id="messageDiv"></div>
+<script>
+    $('#sender').click(function () {
+        var url="category/10";
+        $.get(
+            url,
+            function (data) {
+                console.log(data);
+                var json=data;
+                var name=json.name;
+                var id=json.id;
+                $("#messageDiv").html("category id:"+id+"<br>category name:"+name);
+
+            }
+        );
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX use JSON get data_Many Category</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="use AJAX get Many Category" id="sender">
+<div id="messageDiv" ></div>
+<script>
+    $('#sender').click(function () {
+        var url="category?start=0&size=10";
+        $.get(
+            url,
+            function (data) {
+                var categorys=data;
+                for (i in categorys){
+                    var old=$("#messageDiv").html();
+                    var category=categorys[i];
+                    $('#messageDiv').html(old+"<br>"+category.id+"------"+category.name)
+                }
+            }
+        );
+
+    });
+</script>
+</body>
+</html>

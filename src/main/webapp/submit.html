@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX use JSON submit data</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<form>
+    id:<input type="text" id="id" value="123"><br>
+    name:<input type="text" id="name" value="category xxx"/><br>
+    <input type="button" value="submit" id="sender">
+</form>
+<div id="messageDiv"></div>
+<script>
+    $('#sender').click(function () {
+        var id=document.getElementById('id').value;
+        var name=document.getElementById('name').value;
+        var category={"name":name,"id":id};
+        var jsonData=JSON.stringify(category);
+        var page="category";
+
+        $.ajax(
+            {
+                type:"put",
+                url:page,
+                data:jsonData,
+                dataType:"json",
+                contentType:"application/json;charset=UTF-8",
+                success:function (result) {
+                    
+                }
+            }
+        );
+        alert("submit success, check data on springboot console")
+    })
+</script>
+</body>
+</html>
